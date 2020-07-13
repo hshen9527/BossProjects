@@ -1,11 +1,13 @@
-package org.boss.cart.model;
+package org.boss.cart.model.common;
 
 import org.springframework.context.annotation.Bean;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
+
     private String username;
+
     private String password;
 
     @Override

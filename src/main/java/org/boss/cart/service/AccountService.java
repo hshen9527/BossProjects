@@ -1,7 +1,7 @@
 package org.boss.cart.service;
 
 import org.apache.ibatis.annotations.Param;
-import org.boss.cart.model.User;
+import org.boss.cart.model.common.User;
 
 import java.util.List;
 

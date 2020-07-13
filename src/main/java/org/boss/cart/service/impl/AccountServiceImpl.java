@@ -1,6 +1,6 @@
 package org.boss.cart.service.impl;
 
-import org.boss.cart.model.User;
+import org.boss.cart.model.common.User;
 import org.boss.cart.persistence.UserMapper;
 import org.boss.cart.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;

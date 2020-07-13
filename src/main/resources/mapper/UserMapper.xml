@@ -5,7 +5,7 @@
 <mapper namespace="org.boss.cart.persistence.UserMapper">
     <cache/>
 
-    <select id="getUserList" resultType="org.boss.cart.model.User">
+    <select id="getUserList" resultType="org.boss.cart.model.common.User">
     SELECT
       USERNAME,
       PASSWORD
@@ -13,7 +13,7 @@
     </select>
 
     <!--通过用户名得到账户信息-->
-    <select id="getUserInfoByUsername" parameterType="java.lang.String" resultType="org.boss.cart.model.User">
+    <select id="getUserInfoByUsername" parameterType="java.lang.String" resultType="org.boss.cart.model.common.User">
     SELECT
       USERNAME,
       PASSWORD

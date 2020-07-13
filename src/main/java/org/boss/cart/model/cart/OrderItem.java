@@ -1,15 +1,23 @@
-package org.boss.cart.model;
+package org.boss.cart.model.cart;
 
 import java.io.Serializable;
 import java.io.StringReader;
 import java.util.Date;
 
 public class OrderItem implements Serializable {
+
     private String orderId;
+
+    private long itemId;
+
     private String itemName;
+
     private String itemSize;
+
     private int number;
+
     private String purpose;
+
     private Date time;
 
     public String getOrderId() {
@@ -18,6 +26,14 @@ public class OrderItem implements Serializable {
 
     public void setOrderId(String orderId) {
         this.orderId = orderId;
+    }
+
+    public long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
     }
 
     public String getItemName() {

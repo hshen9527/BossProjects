@@ -1,7 +1,7 @@
 package org.boss.cart.persistence;
 
 import org.apache.ibatis.annotations.Param;
-import org.boss.cart.model.OrderItem;
+import org.boss.cart.model.cart.OrderItem;
 
 import java.util.List;
 

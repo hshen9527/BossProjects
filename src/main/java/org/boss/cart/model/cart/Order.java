@@ -1,6 +1,5 @@
-package org.boss.cart.model;
+package org.boss.cart.model.cart;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -10,9 +9,13 @@ import java.util.List;
 public class Order implements Serializable {
 
     private String orderId;
+
     private String department_name;
+
     private String applicant; //申请人
+
     private Date application_date;
+
     private List<OrderItem> orderItems;
 
     public Order(){}

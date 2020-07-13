@@ -1,9 +1,7 @@
 package org.boss.cart.persistence;
 
 import org.apache.ibatis.annotations.Param;
-import org.boss.cart.model.Order;
-
-import java.util.List;
+import org.boss.cart.model.cart.Order;
 
 public interface OrderMapper {
 

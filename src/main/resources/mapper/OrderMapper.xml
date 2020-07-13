@@ -5,7 +5,7 @@
 <mapper namespace="org.boss.cart.persistence.OrderMapper">
     <cache/>
 
-    <select id="getOrderByOrderID" resultType="org.boss.cart.model.Order" parameterType="java.lang.String">
+    <select id="getOrderByOrderID" resultType="org.boss.cart.model.cart.Order" parameterType="java.lang.String">
     SELECT
     orderId, department_name, applicant, application_date
     FROM table_order_user

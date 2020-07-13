@@ -5,8 +5,8 @@
 <mapper namespace="org.boss.cart.persistence.OrderItemMapper">
     <cache/>
 
-    <select id="getOrderItems" resultType="org.boss.cart.model.OrderItem">
-    SELECT orderId,itemName,itemSize,number,purpose,time
+    <select id="getOrderItems" resultType="org.boss.cart.model.cart.OrderItem">
+    SELECT orderId, itemId, itemName, itemSize, number, purpose, time
     FROM table_order_item
     </select>
 

@@ -1,6 +1,6 @@
 package org.boss.cart.controller;
 
-import org.boss.cart.model.User;
+import org.boss.cart.model.common.User;
 import org.boss.cart.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +35,12 @@ public class AccountController {
 
     @PostMapping("/logon")
     public boolean userLogon(@RequestParam(value = "username", required = true) String username,
-                          @RequestParam(value = "password", required = true) String password){
-         if(accountService.setUser(username, password)>0){
-             return true;
-         }else {
-             return false;
-         }
+                             @RequestParam(value = "password", required = true) String password){
+        if(accountService.setUser(username, password)>0){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     @ResponseBody
