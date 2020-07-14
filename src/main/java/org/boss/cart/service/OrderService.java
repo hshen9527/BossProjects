@@ -1,18 +1,20 @@
 package org.boss.cart.service;
 
 import org.apache.ibatis.annotations.Param;
-import org.boss.cart.model.cart.Order;
-import org.boss.cart.model.cart.OrderItem;
+import org.boss.cart.model.cart.dto.OrderDTO;
+import org.boss.cart.model.cart.po.OrderItemPO;
 
 import java.util.List;
 
 public interface OrderService {
-    // 通过OrderId获得所有订单上物品
-    List<OrderItem> getOrderItems(@Param("orderId") String orderId);
 
-    Order getOrderByOrderID(@Param("orderId") String orderId);
+    /**
+     * 通过用户Id获得订单信息
+     * */
+    OrderDTO getByOrderId(String orderId);
 
-    void setOrder(@Param("Order") Order order);
-
-    void updateOrder(@Param("Order") Order order);
+    /**
+     * 保存订单信息
+     * */
+    boolean save(OrderDTO order);
 }

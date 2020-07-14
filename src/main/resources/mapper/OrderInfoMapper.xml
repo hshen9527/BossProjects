@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.boss.cart.persistence.OrderInfoMapper">
+    <cache/>
+
+    <select id="getOrderInfoByOrderID" resultType="org.boss.cart.model.cart.dto.OrderDTO" parameterType="java.lang.String">
+    SELECT
+    orderId, department, applicant, filingDate
+    FROM table_order_user
+    WHERE orderId = #{orderId}
+    </select>
+
+    <insert id="saveOrderInfo" parameterType="org.boss.cart.model.cart.po.OrderInfoPO">
+        INSERT INTO table_order_user
+          (orderId, department, applicant, filingDate)
+        VALUES
+          (#{orderId}, #{department}, #{applicant}, #{filingDate})
+    </insert>
+
+</mapper>

@@ -1,8 +1,8 @@
 package org.boss.cart.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.boss.cart.model.cart.Goods;
+import lombok.extern.slf4j.Slf4j;
+import org.boss.cart.model.cart.dto.GoodsDTO;
 import org.boss.cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,21 +11,22 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Service
+@Slf4j
 public class CartServiceImpl implements CartService {
 
     @Autowired
     private HttpSession session;
 
-    private HashMap<Long, Goods> myCart;
+    private HashMap<Long, GoodsDTO> myCart;
 
     @Override
-    public boolean add(Goods goods) {
+    public boolean add(GoodsDTO goods) {
         getCart();
         //myCart.put(goods.getId(), goods);
-        if(myCart.containsKey(goods.getGoodId())){
-            edit(goods.getGoodId(), goods.getNumber()+1);
+        if(myCart.containsKey(goods.getId())){
+            edit(goods.getId(), goods.getNumber()+1);
         }else {
-            myCart.put(goods.getGoodId(), goods);
+            myCart.put(goods.getId(), goods);
         }
         return true;
     }
@@ -44,7 +45,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public boolean edit(long goodsId, int number) {
         getCart();
-        Goods goods = myCart.get(goodsId);
+        GoodsDTO goods = myCart.get(goodsId);
         if(myCart.containsKey(goodsId)){
             if(number == 0){ // 商品数量为零则删除该商品
                 remove(goodsId);
@@ -75,11 +76,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public HashMap<Long, Goods> getCart() {
+    public HashMap<Long, GoodsDTO> getCart() {
         myCart = (HashMap)session.getAttribute("mycart"); // 获得session中的购物车信息
         if(myCart == null){
-            System.out.println("000");
-            myCart = new HashMap<Long, Goods>();
+            log.debug("session loading");
+            myCart = new HashMap<Long, GoodsDTO>();
             session.setAttribute("myCart", myCart);
         }
         return myCart;

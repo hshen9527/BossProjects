@@ -5,9 +5,25 @@
 <mapper namespace="org.boss.cart.persistence.OrderItemMapper">
     <cache/>
 
-    <select id="getOrderItems" resultType="org.boss.cart.model.cart.OrderItem">
+    <select id="listOrderItems" resultType="org.boss.cart.model.cart.po.OrderItemPO">
     SELECT orderId, itemId, itemName, itemSize, number, purpose, time
     FROM table_order_item
+    WHERE orderId = #{orderId}
     </select>
+
+    <insert id="saveOrderInfo" parameterType="java.util.List">
+        INSERT INTO table_order_item
+          (orderId, itemId, itemName, itemSize, number, purpose, time)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orderId,jdbcType=VARCHAR},
+             #{item.itemId,jdbcType=int},
+             #{item.itemName,jdbcType=VARCHAR},
+             #{item.itemSize,jdbcType=VARCHAR},
+             #{item.number,jdbcType=int},
+             #{item.purpose,jdbcType=VARCHAR},
+             #{item.time,jdbcType=datetime})
+        </foreach>
+    </insert>
 
 </mapper>
